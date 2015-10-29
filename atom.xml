@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title><![CDATA[Grayon's Blog]]></title>
+  <subtitle><![CDATA[Nice to meet you]]></subtitle>
+  <link href="/atom.xml" rel="self"/>
+  <link href="http://laa.pw/"/>
+  <updated>2015-10-29T09:24:51.000Z</updated>
+  <id>http://laa.pw/</id>
+  
+  <author>
+    <name><![CDATA[Grayon]]></name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[OS X 10.11 使用pod提示command not find]]></title>
+    <link href="http://laa.pw/2015/10/29/OS-X-10-11-use-pod-command-not-find.html"/>
+    <id>http://laa.pw/2015/10/29/OS-X-10-11-use-pod-command-not-find.html</id>
+    <published>2015-10-29T09:09:38.000Z</published>
+    <updated>2015-10-29T09:24:51.000Z</updated>
+    <content type="html"><![CDATA[<p>今天在Github上下载了写源码，准备编译测试，因为它使用了Cocoapods管理第三方库，所以先要用pod命令下载好第三方库。</p>
+<p>我切换到相应目录使用pod install命令，居然提示command not find，pod命令直接失踪了，原来装的好好的Cocoapods呢，因为最近刚刚升级OS X 10.11所以可能和升级系统有关，应该再次安装就好了。</p>
+<p>使用<br><figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">sudo gem <span class="keyword">install</span> Cocoapods</span><br></pre></td></tr></table></figure></p>
+<p>命令安装，这里又提示出错：</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">Error fetching <span class="string">http:</span><span class="comment">//ruby.taobao.org/:</span></span><br><span class="line">	bad response Not Found <span class="number">404</span> (<span class="string">http:</span><span class="comment">//ruby.taobao.org/specs.4.8.gz)</span></span><br></pre></td></tr></table></figure>
+<p>404错误淘宝的镜像源出什么问题了？<br>打开淘宝源官网有说明，已停用http现在改用https。<br>使用命令：</p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><span class="line">gem sources --<span class="built_in">add</span> http<span class="variable">s:</span>//<span class="keyword">ruby</span>.taobao.org/ --<span class="built_in">remove</span> http<span class="variable">s:</span>//rubygems.org/</span><br></pre></td></tr></table></figure>
+<p>切换成https的源即可。</p>
+<p>再次使用<br><figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">sudo gem <span class="keyword">install</span> Cocoapods</span><br></pre></td></tr></table></figure></p>
+<p> 命令安装。</p>
+<p>居然又出错：</p>
+<figure class="highlight elixir"><table><tr><td class="code"><pre><span class="line"><span class="constant">ERROR:</span>  <span class="constant">While </span>executing gem ... (<span class="constant">Errno:</span><span class="symbol">:EPERM</span>)</span><br><span class="line">    <span class="constant">Operation </span><span class="keyword">not</span> permitted - <span class="regexp">/usr/bin</span><span class="regexp">/pod</span></span><br></pre></td></tr></table></figure>
+<p>提示是操作不允许，现在可是root权限执行命令，怎么会提示权限问题呢，查阅相关资料了解到：</p>
+<p>OS X El Capitan中，在内核下引入了Rootless机制，以下路径：</p>
+<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line">/System</span><br><span class="line">/bin</span><br><span class="line">/sbin</span><br><span class="line">/usr <span class="list">(<span class="keyword">except</span> /usr/local)</span></span><br></pre></td></tr></table></figure>
+<p>均属于Rootless范围，即使root用户无法对此目录有写和执行权限，只有Apple以及Apple授权签名的软件（包括命令行工具）可以修改此目录。</p>
+<p>所以想要安装Cocoapods还要关闭掉Rootless吗，这种方式是可行的，但是我当然不推荐。</p>
+<p>更改应用安装目录就可以了。</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">sudo gem <span class="operator"><span class="keyword">install</span> -<span class="keyword">n</span> /usr/<span class="keyword">local</span>/<span class="keyword">bin</span> cocoapods</span></span><br></pre></td></tr></table></figure>
+<p>至此再使用pod命令就不会有任何问题了。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>今天在Github上下载了写源码，准备编译测试，因为它使用了Cocoapods管理第三方库，所以先要用pod命令下载好第三方库。</p>
+<p>我切换到相应目录使用pod install命令，居然提示command not find，pod命令直接失踪了，原来装的好好的Co]]>
+    </summary>
+    
+      <category term="Cocoapods" scheme="http://laa.pw/tags/Cocoapods/"/>
+    
+      <category term="OS X" scheme="http://laa.pw/tags/OS-X/"/>
+    
+      <category term="iOS" scheme="http://laa.pw/tags/iOS/"/>
+    
+  </entry>
+  
+</feed>
