@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Nice to meet you]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://laa.pw/"/>
-  <updated>2015-11-01T16:47:11.000Z</updated>
+  <updated>2015-11-12T03:57:41.000Z</updated>
   <id>http://laa.pw/</id>
   
   <author>
@@ -15,11 +15,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[UINavigationController的viewControllers管理]]></title>
+    <title><![CDATA[UINavigationController的ViewControllers管理]]></title>
     <link href="http://laa.pw/2015/11/01/NavigationController-viewControllers-Management.html"/>
     <id>http://laa.pw/2015/11/01/NavigationController-viewControllers-Management.html</id>
     <published>2015-11-01T12:39:37.000Z</published>
-    <updated>2015-11-01T16:47:11.000Z</updated>
+    <updated>2015-11-12T03:57:41.000Z</updated>
     <content type="html"><![CDATA[<h1 id="问题描述">问题描述</h1><p>在使用<strong>UINavigationController</strong>时，使用简单的<strong>push</strong>（现在是show）、<strong>pop</strong>操作就可以实现页面的层次管理，iOS的导航控制器也提供了很好的动画效果和手势控制，带来了非常优秀的用户体验。</p>
 <p>可是<strong>UINavigationController</strong>是使用栈来管理的，在使用时我们难免会遇到特殊的需求，使用简单的<strong>push</strong>、<strong>pop</strong>不能满足，这时候就需要我们自己手动来管理<strong>UINavigationController</strong>的<strong>viewControllers</strong>了。</p>
 <h1 id="应用实例">应用实例</h1><p>在使用<strong>微信</strong>或者<strong>qq</strong>时，你可能会发现，<strong>微信</strong>的<strong>NavigationController</strong>的竟然可以在子视图之间随意跳转。</p>
